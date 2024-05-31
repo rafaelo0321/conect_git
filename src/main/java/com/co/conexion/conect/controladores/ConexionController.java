@@ -1,16 +1,16 @@
 package com.co.conexion.conect.controladores;
 
-import com.co.conexion.conect.ConexionServiceConGit;
+import com.co.conexion.conect.servicios.ConexionServiceConGit;
 import com.co.conexion.conect.entidades.BuscarUsuarioEnGit;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/conec")
+@RequestMapping("/api/v1/conexion")
 public class ConexionController {
 
 
@@ -20,9 +20,9 @@ public class ConexionController {
         this.conexionServiceConGit = conexionServiceConGit;
     }
 
-    @GetMapping("/search/users")
+    @GetMapping("/buscar/usuarios")
     public ResponseEntity<BuscarUsuarioEnGit> buscarUsuariosGit(@RequestParam String nombre) {
-        BuscarUsuarioEnGit response = conexionServiceConGit.buscarUsuarios(nombre);
-        return ResponseEntity.ok(response);
+        BuscarUsuarioEnGit respuestaGit = conexionServiceConGit.buscarUsuarios(nombre);
+        return new ResponseEntity<>(respuestaGit, HttpStatus.OK);
     }
 }

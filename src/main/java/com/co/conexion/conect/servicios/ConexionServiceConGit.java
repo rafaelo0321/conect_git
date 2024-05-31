@@ -1,4 +1,4 @@
-package com.co.conexion.conect;
+package com.co.conexion.conect.servicios;
 
 import com.co.conexion.conect.entidades.BuscarUsuarioEnGit;
 import org.springframework.stereotype.Service;
